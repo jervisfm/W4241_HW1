@@ -18,6 +18,17 @@ public class MatrixLib {
 		return null; 
 	}
 	
+	private static Matrix strasMultHelper(Matrix a, Matrix b) {
+		
+		if (a == null || b == null)
+			return null;
+		
+		if (!MatrixUtil.isSameSizeSquareMatrix(a, b))
+			return null;
+		
+		return null;
+	}
+	
 	/**
 	 * Performs Matrix Multiplication using the traditional
 	 * (naive) algorithm. 

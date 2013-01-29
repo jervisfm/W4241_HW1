@@ -152,6 +152,15 @@ public class Matrix implements Comparable<Matrix>{
 		return m;
 	}
 
+	/**
+	 * Determines if this matrix and the given matrix are equal
+	 * @param o - ohter matrix to compare against.
+	 * @return true if equal, false otherwise
+	 */
+	public boolean equals(Matrix o) {
+		return this.compareTo(o) == 0;
+	}
+	
 	@Override
 	public int compareTo(Matrix o) {
 		

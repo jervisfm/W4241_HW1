@@ -1,8 +1,14 @@
 
+/**
+ * 
+ * @author Jervis
+ * See http://en.wikipedia.org/wiki/Strassen_algorithm
+ * for Algorithm details. 
+ */
 public class StrassenUtil {
 
 	
-	public static Matrix multiply2x2(Matrix a, Matrix b) throws Exception {
+	public static Matrix mult2x2(Matrix a, Matrix b) throws Exception {
 		
 		if (!MatrixUtil.isTwoByTwo(a, b))
 			throw new Exception("Matrices should be 2x2");
