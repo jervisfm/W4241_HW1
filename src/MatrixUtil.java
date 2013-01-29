@@ -40,7 +40,7 @@ public class MatrixUtil {
 	}
 	
 	/**
-	 * Ensures that the given matrices are 2x2 matrices.
+	 * Checks that the given matrices are 2x2 matrices.
 	 * @param a - matrix A
 	 * @param b - matrix B
 	 * @return true if both are 2x2
@@ -50,6 +50,19 @@ public class MatrixUtil {
 		return  a.rowSize() == size && a.colSize() == size &&
 				b.rowSize() == size && b.colSize() == size;
 	}
+	
+	/**
+	 * Checks that the given matrices are 2x2 matrices.
+	 * @param a - matrix A
+	 * @param b - matrix B
+	 * @return true if both are 2x2
+	 */
+	public static boolean isOneByOne(Matrix a, Matrix b) {
+		final int size = 1;
+		return  a.rowSize() == size && a.colSize() == size &&
+				b.rowSize() == size && b.colSize() == size;
+	}
+	
 	
 	/**
 	 * Gets the sub-matrix at the given position assuming that

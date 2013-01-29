@@ -40,7 +40,12 @@ public class StrassenUtil {
 
 		if (a == null || b == null)
 			throw new Exception("Null Matrix Input given");
-		
+		if (MatrixUtil.isOneByOne(a, b)) { /* Handle special case */
+			Matrix result = new Matrix(1,1); 
+			double val =  a.get(0, 0) * b.get(0, 0);
+			result.set(0, 0, val);
+			return result;
+		} 
 		if (MatrixUtil.isTwoByTwo(a, b)) { /* Base Case */
 			return mult2x2(a, b);
 		} else { /* Recursive case */
@@ -77,17 +82,19 @@ public class StrassenUtil {
 		return result;
 	}
 	
-	private static double Q1(Matrix a, Matrix b) throws Exception {
+	private static Matrix Q1(Matrix a, Matrix b) throws Exception {
 		
 		if (!MatrixUtil.isTwoByTwo(a, b))
 			throw new Exception("Matrices should be 2x2");
 
-		double a11 = a.get1(1, 1);
-		double a22 = a.get1(2, 2);
-		double b11 = b.get1(1, 1);
-		double b22 = b.get1(2, 2);
+		Matrix a11 = a.getM(1, 1);
+		Matrix a22 = a.getM(2, 2);
+		Matrix b11 = b.getM(1, 1);
+		Matrix b22 = b.getM(2, 2);
 
-		double result = (a11 + a22) * (b11 + b22);
+		Matrix t1 = a11.add(a22); 
+		Matrix t2 = b11.add(b22);
+		Matrix result = StrassenUtil.strasMultHelper(t1, t2);
 		return result;
 	}
 	
