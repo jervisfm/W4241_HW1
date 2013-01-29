@@ -1,5 +1,5 @@
 
-public class Matrix {
+public class Matrix implements Comparable<Matrix>{
 
 	private double[][] data;
 	
@@ -73,5 +73,65 @@ public class Matrix {
 		}
 	}
 	
+	public Matrix getEntireRow(int row) {
+		
+		int rowSize = rowSize();
+		int colSize = colSize();
+		
+		if (row < 0 || row >= rowSize)
+			return null;
+		
+		Matrix m = new Matrix(1,colSize); 
+		for (int i = 0; i < colSize; ++i) {
+			double val = data[row][i];
+			try {
+				m.set(0, i, val);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
+		return m;
+	}
 	
+	public Matrix getEntireCol(int col) {
+		int rowSize = rowSize(); 
+		int colSize = colSize(); 
+		
+		if (col < 0 || col > colSize)
+			return null;
+		
+		Matrix m = new Matrix(1,rowSize);
+		for (int i = 0; i < rowSize; ++i) {
+			double val = data[i][col];
+			try {
+				m.set(0, i, val);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
+		return m;
+	}
+
+	@Override
+	public int compareTo(Matrix o) {
+		
+		if (!MatrixUtil.isSameSize(this, o))
+			return -1;
+		
+		int size = rowSize();
+		double err = Math.pow(10, -9);
+		for (int i = 0; i < size; ++i){
+			for (int j = 0; j < size; ++j) {
+				try {
+					if (Math.abs(data[i][j] - o.get(i, j)) > err)
+						return -1;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return 0;
+	}
 }

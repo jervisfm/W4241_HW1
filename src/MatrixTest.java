@@ -52,4 +52,32 @@ public class MatrixTest {
 			// Success
 		}
 	}
+	
+	@Test
+	public void getEntireRow() {
+		double test[][] = { {1,2}, {3,4} };
+		double exp [][] = {{1,2}};
+		Matrix m = new Matrix(2,2);
+		m.set(test);
+		
+		Matrix expected = new Matrix(1,2);
+		expected.set(exp);
+		
+		Matrix actual =  m.getEntireRow(0);
+		assertTrue(actual.compareTo(expected) == 0);
+	}
+	
+	@Test
+	public void getEntireCol() {
+		double test[][] = { {1,2}, {3,4} };
+		double exp [][] = {{1, 3}};
+		Matrix m = new Matrix(2,2);
+		m.set(test);
+		
+		Matrix expected = new Matrix(1,2);
+		expected.set(exp);
+		
+		Matrix actual =  m.getEntireCol(0);
+		assertTrue(actual.compareTo(expected) == 0);
+	}
 }
