@@ -34,8 +34,8 @@ public class MatrixLib {
 			a == null || b == null)
 			return null;
 		
-		int resultRows = a.colSize(); 
-		int resultCols = b.rowSize();
+		int resultRows = a.rowSize(); 
+		int resultCols = b.colSize();
 		Matrix m = new Matrix(resultRows, resultCols);
 		
 		for (int i = 0; i < resultRows; ++i) {
