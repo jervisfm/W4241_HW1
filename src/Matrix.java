@@ -10,7 +10,28 @@ public class Matrix implements Comparable<Matrix>{
 	public Matrix(int rows, int cols) {
 		this.data = new double[rows][cols];
 	}
-			
+
+	/**
+	 * Retrieves the element at the given position assuming 
+	 * position is given in 1-based indexes. 
+	 * @param row - row
+	 * @param col - column
+	 * @throws Exception - if invalid/non-existent index given.
+	 */
+	public double get1(int row, int col) throws Exception {
+		checkOneBasedIndexRange(row, col);
+		
+		return data[row - 1][col - 1];
+	}
+	
+	/***
+	 * Retrieves the matrix element at the given position using
+	 * a 0-based index
+	 * @param row - the row
+	 * @param col - the col
+	 * @return the found element
+	 * @throws Exception if indices given invalid or out of range
+	 */
 	public double get(int row, int col) throws Exception{		
 		
 		checkIndexRange(row, col);
@@ -58,7 +79,7 @@ public class Matrix implements Comparable<Matrix>{
 	}
 	
 	/**
-	 * Checks if the given indice values are valid
+	 * Checks if the given indices values (0-based) are valid
 	 * @param row - row
 	 * @param col - column
 	 * @return - true on success 
@@ -70,6 +91,19 @@ public class Matrix implements Comparable<Matrix>{
 		
 		if (row >= rowSize || col >= colSize ||
 			row  < 0       || col < 0)  {
+			throw new Exception(String.format("Index Out of Range (%d,%d)",
+								row, col));
+		} else {
+			return true;
+		}
+	}
+	
+	private boolean checkOneBasedIndexRange(int row, int col) throws Exception {
+		int rowSize = rowSize(); 
+		int colSize = colSize(); 
+		
+		if (row > rowSize || col > colSize ||
+			row  < 1      || col < 1)  {
 			throw new Exception(String.format("Index Out of Range (%d,%d)",
 								row, col));
 		} else {

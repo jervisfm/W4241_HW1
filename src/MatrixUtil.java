@@ -31,6 +31,28 @@ public class MatrixUtil {
 	}
 	
 	/**
+	 * Determines if Matrices 'a' and 'b' are square matrices
+	 * and that they have the same dimension.
+	 */
+	public static boolean isSameSizeSquareMatrix(Matrix a, Matrix b) {
+		int size = a.rowSize(); 
+		return  a.colSize() == size && 
+				b.rowSize() == size && b.colSize() == size; 
+	}
+	
+	/**
+	 * Ensures that the given matrices are 2x2 matrices.
+	 * @param a - matrix A
+	 * @param b - matrix B
+	 * @return true if both are 2x2
+	 */
+	public static boolean isTwoByTwo(Matrix a, Matrix b) {
+		final int size = 2;
+		return  a.rowSize() == size && a.colSize() == size &&
+				b.rowSize() == size && b.colSize() == size;
+	}
+	
+	/**
 	 * 
 	 * @param a - a ROW Vector
 	 * @param b - a ROW Vector
@@ -54,6 +76,8 @@ public class MatrixUtil {
 		}
 		return sum;
 	}
+	
+	
 	
 	
 }
