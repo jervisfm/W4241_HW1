@@ -31,9 +31,26 @@ public class MatrixTest {
 		} catch (Exception e) {
 			fail("Incorrect Out of Index error:" + e);
 		}
-
-		
-		
 	}
 
+	@Test
+	public void InvalidInputs() {
+		double test[][] = { {1,2}, {3,4} };
+		Matrix m = new Matrix(2,2); 
+		// Invalid Set 
+		try {
+			m.set(2,2,240);
+			fail("Invalid Index Input not caught");
+		} catch (Exception e) {
+			// Success
+		}
+		
+		// Invalid Get
+		try {
+			m.get(2,2);
+			fail("Invalid Index Input not caught");
+		} catch (Exception e) {
+			// Success
+		}
+	}
 }
