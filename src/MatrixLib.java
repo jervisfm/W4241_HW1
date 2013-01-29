@@ -29,8 +29,23 @@ public class MatrixLib {
 			a == null || b == null)
 			return null;
 		
+		int resultRows = a.colSize(); 
+		int resultCols = b.rowSize();
+		Matrix m = new Matrix(resultRows, resultCols);
 		
-		return null; 
-		
+		for (int i = 0; i < resultRows; ++i) {
+			Matrix r = a.getEntireRow(i);
+			for (int j = 0; j < resultCols; ++j) {
+				Matrix c = b.getEntireCol(j);
+				try {
+					double val = MatrixUtil.dotProduct(r, c);
+					m.set(i, j, val);
+				} catch (Exception e) {
+					e.printStackTrace();
+					return null;
+				}
+			}
+		}
+		return m;
 	}
 }
