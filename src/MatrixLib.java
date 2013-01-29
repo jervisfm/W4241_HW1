@@ -9,6 +9,8 @@ public class MatrixLib {
 	 */
 	public static Matrix strasMult(Matrix a, Matrix b) {
 		
+		// to be implemented
+		return null; 
 	}
 	
 	/**
@@ -28,7 +30,7 @@ public class MatrixLib {
 			return null;
 		
 		
-		
+		return null; 
 		
 	}
 }

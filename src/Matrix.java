@@ -37,7 +37,20 @@ public class Matrix {
 	}
 	
 	public String toString() {
-		return super.toString();
+		
+		StringBuffer sb = new StringBuffer();
+		
+		int rows = rowSize(); 
+		int cols = colSize(); 
+		
+		for (int i = 0; i < rows; ++i) {
+			for (int j = 0; j < cols; ++j) {				
+				sb.append(data[i][j] + ", ");
+			}
+			sb.append("\n");
+		}
+		
+		return sb.toString();
 	}
 	
 	/**

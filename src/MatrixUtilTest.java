@@ -40,6 +40,35 @@ public class MatrixUtilTest {
 		assertEquals(expectedColSize, actualColSize); 
 	}
 
-	
-	
+	@Test
+	public void canDotProduct() {
+		Matrix m1 = new Matrix(1,5);
+		Matrix m2 = new Matrix(1,5);
+		
+		assertTrue(MatrixUtil.canDotProduct(m1, m2));
+		
+		Matrix m3 = new Matrix (2,5);
+		Matrix m4 = new Matrix (1,6); 
+		assertFalse(MatrixUtil.canDotProduct(m1, m3));
+		assertFalse(MatrixUtil.canDotProduct(m1, m4));
+	}
+	@Test
+	public void dotProduct() {
+		double t1[][] = {{1,2,3}};
+		double t2[][] = {{7,4,5}};
+		double expected = 30;
+		Matrix m1 = new Matrix(1,3);
+		m1.set(t1);
+		
+		Matrix m2 = new Matrix(1,3);
+		m2.set(t2);
+		
+		try {
+			double actual = MatrixUtil.dotProduct(m1, m2);
+			assertEquals(expected, actual, Math.pow(10, -7));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			fail("Failed to compute dot product: " + e);
+		}
+	}
 }
