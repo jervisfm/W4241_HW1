@@ -45,7 +45,8 @@ public class StrassenUtil {
 			return mult2x2(a, b);
 		} else { /* Recursive case */
 			
-			// Divide 
+			// Divide Matrix Up. 
+			
 			
 		}
 		return null; 

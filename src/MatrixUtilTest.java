@@ -71,4 +71,43 @@ public class MatrixUtilTest {
 			fail("Failed to compute dot product: " + e);
 		}
 	}
+	
+	@Test
+	public void getMat() {
+		double[][] test = {{1,2,3,4}, {5,6,7,8},
+						  {9,10,11,12}, {13,14,15,16}};
+		Matrix m = new Matrix(4,4);
+		m.set(test);
+				
+		double [][] ans;
+		Matrix actual;
+		Matrix expected = new Matrix(2,2);
+		try {
+			// Get 0,0		
+			double[][] temp1 = {{1,2},{5,6}};
+			expected.set(temp1);
+			actual = MatrixUtil.getMat(m, 0, 0);
+			assertTrue(actual.equals(expected));
+			
+			// Get 0,1
+			double[][] temp2 = {{3,4}, {7,8}};
+			expected.set(temp2);
+			actual = MatrixUtil.getMat(m,0,1);
+			assertTrue(actual.equals(expected));
+			
+			// Get 1,0
+			double[][] temp3 = {{9,10}, {13,14}};
+			expected.set(temp3);
+			actual = MatrixUtil.getMat(m,1,0);
+			assertTrue(actual.equals(expected));
+			
+			// Get 1,1
+			double[][] temp4 = {{11,12},{15,16}};
+			expected.set(temp4);
+			actual = MatrixUtil.getMat(m,1,1);
+			assertTrue(actual.equals(expected));
+		} catch(Exception e) {
+			fail("An error occured: " + e);
+		}
+	}
 }

@@ -65,8 +65,8 @@ public class MatrixUtil {
 		if (m.rowSize() != m.colSize()) 
 			throw new Exception("Matrix must be a square matrix");
 		
-		if (row != 0 || row != 1 ||
-			col != 0 || col != 1)
+		if ((row != 0 && row != 1) ||
+			(col != 0 && col != 1))
 			throw new Exception("Invalid Indexes Given: " + row + "," + col);
 					
 		int size = m.rowSize();
