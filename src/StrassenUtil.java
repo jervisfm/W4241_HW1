@@ -8,6 +8,18 @@
 public class StrassenUtil {
 
 	
+	/**
+	 * Performs Matrix Multiplication using the Strassen Algorithm
+	 * on the given matrices.  
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	public static Matrix multiply(Matrix a, Matrix b) {
+		// to be implemented. 
+		return null;
+	}
+	
 	public static Matrix mult2x2(Matrix a, Matrix b) throws Exception {
 		
 		if (!MatrixUtil.isTwoByTwo(a, b))

@@ -152,6 +152,40 @@ public class Matrix implements Comparable<Matrix>{
 		return m;
 	}
 
+	public Matrix add(Matrix other) throws Exception {
+		
+		if (!MatrixUtil.isSameSize(this, other))
+			throw new Exception("Matrix addition only defined for " +
+								"matrices of same size");
+		
+		int rows = rowSize();
+		int cols = colSize(); 
+		for (int i = 0; i < rows; ++i) {
+			for (int j = 0; j < cols; ++j) {
+				data[i][j] += other.get(i, j);
+			}
+		}
+		return this;
+	}
+	
+	public Matrix minus(Matrix other) throws Exception {
+		
+		if (!MatrixUtil.isSameSize(this, other))
+			throw new Exception("Matrix subtraction only defined for " +
+								"matrices of same size");
+		
+		int rows = rowSize();
+		int cols = colSize(); 
+		for (int i = 0; i < rows; ++i) {
+			for (int j = 0; j < cols; ++j) {
+				data[i][j] -= other.get(i, j);
+			}
+		}
+		
+		return this;
+	}
+	
+	
 	/**
 	 * Determines if this matrix and the given matrix are equal
 	 * @param o - ohter matrix to compare against.
