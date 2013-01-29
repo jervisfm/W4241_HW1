@@ -76,12 +76,16 @@ public class MatrixUtilTest {
 	public void getMat() {
 		double[][] test = {{1,2,3,4}, {5,6,7,8},
 						  {9,10,11,12}, {13,14,15,16}};
+		double[][] test2 = {{1,2},{3,4}};
+		
 		Matrix m = new Matrix(4,4);
 		m.set(test);
-				
-		double [][] ans;
+		Matrix m2 = new Matrix(2,2);
+		m2.set(test2);
+		
 		Matrix actual;
 		Matrix expected = new Matrix(2,2);
+		Matrix expected2 = new Matrix(1,1);
 		try {
 			// Get 0,0		
 			double[][] temp1 = {{1,2},{5,6}};
@@ -106,6 +110,13 @@ public class MatrixUtilTest {
 			expected.set(temp4);
 			actual = MatrixUtil.getMat(m,1,1);
 			assertTrue(actual.equals(expected));
+			
+			// Test smaller Matrix
+			double[][] temp5 = {{1}};
+			expected2.set(temp5);
+			actual = MatrixUtil.getMat(m2,0,0);
+			assertTrue(actual.equals(expected2));
+			
 		} catch(Exception e) {
 			fail("An error occured: " + e);
 		}

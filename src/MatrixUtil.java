@@ -13,7 +13,6 @@ public class MatrixUtil {
 		return a.colSize() == b.rowSize(); 
 	}
 	
-	
 	/**
 	 * Checks if a dot product can be performed between 'a' and 'b'
 	 * @param a - must a ROW vector

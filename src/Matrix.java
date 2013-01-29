@@ -24,6 +24,10 @@ public class Matrix implements Comparable<Matrix>{
 		return data[row - 1][col - 1];
 	}
 	
+	public Matrix getM(int row, int col) throws Exception {	
+		return MatrixUtil.getMat(this, row, col);
+	}
+	
 	/***
 	 * Retrieves the matrix element at the given position using
 	 * a 0-based index
