@@ -6,7 +6,7 @@ import org.junit.Test;
 public class MatrixTest {
 
 	@Test
-	public void CreateMatrix() {
+	public void createMatrix() {
 		double test[][] = { {1,2}, {3,4} };
 		Matrix m = new Matrix(2,2);
 		m.set(test); 
@@ -15,7 +15,7 @@ public class MatrixTest {
 	}
 	
 	@Test
-	public void SetMatrix() {
+	public void setMatrix() {
 		double test[][] = { {1,2}, {3,4} };
 		Matrix m = new Matrix(2,2); 
 		m.set(test);
@@ -33,7 +33,7 @@ public class MatrixTest {
 	}
 
 	@Test
-	public void InvalidInputs() {
+	public void invalidInputs() {
 		double test[][] = { {1,2}, {3,4} };
 		Matrix m = new Matrix(2,2); 
 		// Invalid Set 
