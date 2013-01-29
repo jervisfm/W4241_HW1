@@ -1,4 +1,8 @@
-
+/**
+ * 
+ * @author Jervis Muindi
+ *
+ */
 public class Matrix implements Comparable<Matrix>{
 
 	private double[][] data;

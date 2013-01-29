@@ -1,4 +1,9 @@
 
+/**
+ * 
+ * @author Jervis Muindi
+ *
+ */
 public class MatrixLib {
 
 	/**
