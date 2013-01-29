@@ -15,11 +15,51 @@ public class StrassenUtil {
 	 * @param b
 	 * @return
 	 */
-	public static Matrix multiply(Matrix a, Matrix b) {
+	public static Matrix multiply(Matrix a, Matrix b) throws Exception {
 		// to be implemented. 
+		
+		if (!MatrixUtil.isSameSizeSquareMatrix(a, b))
+			throw new Exception("Strassen Alg requires square Matrices");
+		
+		
+		
 		return null;
 	}
 	
+
+	/**
+	 * Does Matrix Multiplication using Strassen Algorithm assuming
+	 * already that Matrix A and B have dimensions in the power of 2. 
+	 * @param a
+	 * @param b
+	 * @return
+	 * @throws Exception 
+	 */
+	private static Matrix strasMultHelper(Matrix a, Matrix b) throws Exception {
+		
+
+		if (a == null || b == null)
+			throw new Exception("Null Matrix Input given");
+		
+		if (MatrixUtil.isTwoByTwo(a, b)) { /* Base Case */
+			return mult2x2(a, b);
+		} else { /* Recursive case */
+			
+			// Divide 
+			
+		}
+		return null; 
+	}
+	
+	
+	
+	/**
+	 * Does 2x2 Matrix multiplication (A * B) using the Strassen Alg
+	 * @param a - Matrix A
+	 * @param b - Matrix B
+	 * @return the result of A * B
+	 * @throws Exception if an error occurs.
+	 */
 	public static Matrix mult2x2(Matrix a, Matrix b) throws Exception {
 		
 		if (!MatrixUtil.isTwoByTwo(a, b))

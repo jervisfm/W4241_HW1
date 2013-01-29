@@ -53,6 +53,61 @@ public class MatrixUtil {
 	}
 	
 	/**
+	 * Gets the sub-matrix at the given position assuming that
+	 * the current matrix is divided into 4 equal block matrices.
+	 * The Indices are 0-based.   
+	 * @param row - row index
+	 * @param col - column index
+	 * @return
+	 */
+	public static Matrix getMat(Matrix m, int row, int col) throws Exception {
+		
+		if (m.rowSize() != m.colSize()) 
+			throw new Exception("Matrix must be a square matrix");
+		
+		if (row != 0 || row != 1 ||
+			col != 0 || col != 1)
+			throw new Exception("Invalid Indexes Given: " + row + "," + col);
+					
+		int size = m.rowSize();
+		
+		double lg2 = Math.log10(size) / Math.log10(2);
+		double lg2flr = Math.floor(lg2);
+		double diff = Math.abs(lg2 - lg2flr);
+		if (diff >= Math.pow(10, -9))
+			throw new Exception("Matrix dimension should be a power of 2");
+		
+		int newMatSize = (int) Math.ceil(size / 2);
+		Matrix result = new Matrix(newMatSize, newMatSize); 
+		
+		int startRow, endRow;
+		int startCol, endCol;
+		startRow = endRow = startCol = endCol = 0;
+		
+		if (row == 0 && col == 0 ) {
+			startRow = 0; endRow = newMatSize;
+			startCol = 0; endCol = newMatSize;
+		} else if (row == 0 && col == 1) {
+			startRow = 0; endRow = newMatSize;
+			startCol = newMatSize; endCol = size; 
+		} else if (row == 1 && col == 0) {
+			startRow = newMatSize; endRow = size;
+			startCol = 0; endCol = newMatSize;
+		} else if (row == 1 && col == 1) {
+			startRow = startCol = newMatSize; 
+			endRow = endCol = size;
+		}
+		
+		for (int i = startRow, r = 0; i < endRow; ++i, ++r) {
+			for (int j = startCol, c = 0; j < endCol; ++j, ++c) {
+				double val = m.get(i, j);
+				result.set(r, c, val);
+			}
+		}
+		return result;
+	}
+	
+	/**
 	 * 
 	 * @param a - a ROW Vector
 	 * @param b - a ROW Vector
