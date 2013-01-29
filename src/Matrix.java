@@ -39,6 +39,7 @@ public class Matrix {
 	public String toString() {
 		return super.toString();
 	}
+	
 	/**
 	 * Checks if the given indice values are valid
 	 * @param row - row
@@ -58,4 +59,6 @@ public class Matrix {
 			return true;
 		}
 	}
+	
+	
 }

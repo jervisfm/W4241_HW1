@@ -14,7 +14,6 @@ public class MatrixTest {
 		assertArrayEquals(test, actual);
 	}
 	
-	
 	@Test
 	public void SetMatrix() {
 		double test[][] = { {1,2}, {3,4} };
