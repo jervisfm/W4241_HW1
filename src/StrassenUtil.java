@@ -1,7 +1,7 @@
 
 /**
  * 
- * @author Jervis
+ * @author Jervis Muindi
  * See http://en.wikipedia.org/wiki/Strassen_algorithm
  * for Algorithm details. 
  */
@@ -28,7 +28,9 @@ public class StrassenUtil {
 		 * dimension 
 		 */
 		
-		return null;
+		
+		
+		return strasMultHelper(a,b);
 	}
 	
 
