@@ -37,8 +37,9 @@ public class Matrix implements Comparable<Matrix>{
 		
 		int rowSize = rowSize();
 		int colSize = colSize();
-		if (startRow + o.rowSize() >= rowSize || 
-			startCol + o.colSize() >= colSize)
+		
+		if (startRow + o.rowSize() > rowSize || 
+			startCol + o.colSize() > colSize)
 			throw new Exception("Given Matrix's too big to fit in this matrix");
 		
 		if (startRow < 0 || startRow >= rowSize  ||
