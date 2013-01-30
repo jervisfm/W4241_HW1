@@ -22,6 +22,11 @@ public class StrassenUtil {
 			throw new Exception("Strassen Alg requires square Matrices");
 		
 		
+		/* TODO(jmuindi): Enable support of multiplying matrices
+		 * which are not perfect power of 2s by taking given input
+		 * and add padding of 0s to make them perfect powers of 2 in 
+		 * dimension 
+		 */
 		
 		return null;
 	}
@@ -63,11 +68,24 @@ public class StrassenUtil {
 			// c22 = Q1 + Q3 - Q2 + Q6
 			Matrix c22 = Q1(a,b).add(Q3(a,b)).minus(Q2(a,b)).add(Q6(a,b));
 
+			int mid = a.colSize() / 2;
+			int size = a.colSize();
+			
+			// Get the starting Positions for the 4 blocks matrices
+			int startR1 = 0, startC1 = 0; 
+			int startR2 = mid, startC2 = mid;
+			
+			// Fill the Final Resultant Matrix
+			Matrix result = new Matrix(size,size);
+			result.fill(c11, startR1, startC1);
+			result.fill(c12, startR1, startC2);
+			result.fill(c21, startR2, startC1);
+			result.fill(c22, startR2, startC2);
+			
+			return result; 
 			
 		}
-		return null; 
 	}
-	
 	
 	
 	/**
