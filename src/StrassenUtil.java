@@ -18,6 +18,9 @@ public class StrassenUtil {
 	public static Matrix multiply(Matrix a, Matrix b) throws Exception {
 		// to be implemented. 
 		
+		if (a == null || b == null)
+			throw new Exception("Null Matrix Input given");
+		
 		if (!MatrixUtil.isSameSizeSquareMatrix(a, b))
 			throw new Exception("Strassen Alg requires square Matrices");
 		
@@ -123,9 +126,6 @@ public class StrassenUtil {
 	
 	private static Matrix Q1(Matrix a, Matrix b) throws Exception {
 		
-		if (!MatrixUtil.isTwoByTwo(a, b))
-			throw new Exception("Matrices should be 2x2");
-
 		Matrix a11 = a.get1M(1, 1);
 		Matrix a22 = a.get1M(2, 2);
 		Matrix b11 = b.get1M(1, 1);
@@ -139,9 +139,6 @@ public class StrassenUtil {
 	
 	private static Matrix Q2(Matrix a, Matrix b) throws Exception {
 		
-		if (!MatrixUtil.isTwoByTwo(a, b))
-			throw new Exception("Matrices should be 2x2");
-
 		Matrix a21 = a.get1M(2,1);
 		Matrix a22 = a.get1M(2,2);
 		Matrix b11 = b.get1M(1,1);
@@ -154,9 +151,6 @@ public class StrassenUtil {
 	
 	private static Matrix Q3(Matrix a, Matrix b) throws Exception {
 		
-		if (!MatrixUtil.isTwoByTwo(a, b))
-			throw new Exception("Matrices should be 2x2");
-
 		Matrix a11 = a.get1M(1,1);
 		Matrix b12 = b.get1M(1,2); 
 		Matrix b22 = b.get1M(2,2); 
@@ -169,9 +163,6 @@ public class StrassenUtil {
 	
 	private static Matrix Q4(Matrix a, Matrix b) throws Exception {
 		
-		if (!MatrixUtil.isTwoByTwo(a, b))
-			throw new Exception("Matrices should be 2x2");
-
 		Matrix a22 = a.get1M(2,2); 
 		Matrix b11 = b.get1M(1,1); 
 		Matrix b21 = b.get1M(2,1); 
@@ -184,9 +175,6 @@ public class StrassenUtil {
 	
 	private static Matrix Q5(Matrix a, Matrix b) throws Exception {
 		
-		if (!MatrixUtil.isTwoByTwo(a, b))
-			throw new Exception("Matrices should be 2x2");
-
 		Matrix a11 = a.get1M(1, 1);
 		Matrix a12 = a.get1M(1,2);
 		Matrix b22 = b.get1M(2,2); 
@@ -199,9 +187,6 @@ public class StrassenUtil {
 	
 	private static Matrix Q6(Matrix a, Matrix b) throws Exception {
 		
-		if (!MatrixUtil.isTwoByTwo(a, b))
-			throw new Exception("Matrices should be 2x2");
-
 		Matrix a11 = a.get1M(1,1);
 		Matrix a21 = a.get1M(2,1);
 		Matrix b11 = b.get1M(1,1);
@@ -215,9 +200,6 @@ public class StrassenUtil {
 	
 	private static Matrix Q7(Matrix a, Matrix b) throws Exception {
 		
-		if (!MatrixUtil.isTwoByTwo(a, b))
-			throw new Exception("Matrices should be 2x2");
-
 		Matrix a12 = a.get1M(1,2);
 		Matrix a22 = a.get1M(2,2);
 		Matrix b21 = b.get1M(2,1);
