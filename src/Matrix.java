@@ -26,6 +26,15 @@ public class Matrix implements Comparable<Matrix>{
 	
 
 	/**
+	 * Gets the very first element of the matrix 
+	 * at location 0,0
+	 * @return
+	 */
+	public double fst() {
+		return data[0][0];
+	}
+	
+	/**
 	 * Returns a sub-matrix that's a 1/2-sized block matrix
 	 * at the given position. 
 	 * Indices are 0-based. 

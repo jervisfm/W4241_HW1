@@ -70,17 +70,25 @@ public class StrassenUtil {
 		
 		if (!MatrixUtil.isTwoByTwo(a, b))
 			throw new Exception("Matrices should be 2x2");
+	
+		// c11 = Q1 + Q4 - Q5 + Q7
+		Matrix c11 = Q1(a,b).add(Q4(a,b)).minus(Q5(a,b)).add(Q7(a,b));
 		
-		double c11 = Q1(a,b) + Q4(a,b) - Q5(a,b) + Q7(a,b); 
-		double c21 = Q2(a,b) + Q4(a,b); 
-		double c12 = Q3(a,b) + Q5(a,b);
-		double c22 = Q1(a,b) + Q3(a,b) - Q2(a,b) + Q6(a,b);
+		// c21 = Q2 + Q4
+		Matrix c21 = Q2(a,b).add(Q4(a,b));
 		
-		double[][] ans = {{c11, c12}, {c21, c22}};
+		// c12 = Q3 + Q5
+		Matrix c12 = Q3(a,b).add(Q5(a,b));
+		
+		// c22 = Q1 + Q3 - Q2 + Q6
+		Matrix c22 = Q1(a,b).add(Q3(a,b)).minus(Q2(a,b)).add(Q6(a,b));
+		
+		double[][] ans = {{c11.fst(), c12.fst()}, {c21.fst(), c22.fst()}};
 		Matrix result = new Matrix(2,2); 
 		result.set(ans);
 		return result;
 	}
+	
 	
 	private static Matrix Q1(Matrix a, Matrix b) throws Exception {
 		
@@ -190,4 +198,3 @@ public class StrassenUtil {
 		return result;
 	}
 }
-
