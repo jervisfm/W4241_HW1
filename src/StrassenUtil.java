@@ -87,94 +87,106 @@ public class StrassenUtil {
 		if (!MatrixUtil.isTwoByTwo(a, b))
 			throw new Exception("Matrices should be 2x2");
 
-		Matrix a11 = a.getM(1, 1);
-		Matrix a22 = a.getM(2, 2);
-		Matrix b11 = b.getM(1, 1);
-		Matrix b22 = b.getM(2, 2);
+		Matrix a11 = a.get1M(1, 1);
+		Matrix a22 = a.get1M(2, 2);
+		Matrix b11 = b.get1M(1, 1);
+		Matrix b22 = b.get1M(2, 2);
 
 		Matrix t1 = a11.add(a22); 
 		Matrix t2 = b11.add(b22);
-		Matrix result = StrassenUtil.strasMultHelper(t1, t2);
+		Matrix result = strasMultHelper(t1, t2);
 		return result;
 	}
 	
-	private static double Q2(Matrix a, Matrix b) throws Exception {
+	private static Matrix Q2(Matrix a, Matrix b) throws Exception {
 		
 		if (!MatrixUtil.isTwoByTwo(a, b))
 			throw new Exception("Matrices should be 2x2");
 
-		double a21 = a.get1(2,1);
-		double a22 = a.get1(2,2);
-		double b11 = b.get1(1,1);
+		Matrix a21 = a.get1M(2,1);
+		Matrix a22 = a.get1M(2,2);
+		Matrix b11 = b.get1M(1,1);
 		
-		double result = (a21 + a22) * b11;  
+		Matrix t1 = a21.add(a22);
+		Matrix t2 = b11; 
+		Matrix result = strasMultHelper(t1, t2);
 		return result;
 	}	
 	
-	private static double Q3(Matrix a, Matrix b) throws Exception {
+	private static Matrix Q3(Matrix a, Matrix b) throws Exception {
 		
 		if (!MatrixUtil.isTwoByTwo(a, b))
 			throw new Exception("Matrices should be 2x2");
 
-		double a11 = a.get1(1,1);
-		double b12 = b.get1(1,2); 
-		double b22 = b.get1(2,2); 
+		Matrix a11 = a.get1M(1,1);
+		Matrix b12 = b.get1M(1,2); 
+		Matrix b22 = b.get1M(2,2); 
 		
-		double result = a11 * (b12 - b22);   
+		Matrix t1 = a11;
+		Matrix t2 = b12.minus(b22);
+		Matrix result = strasMultHelper(t1, t2);
 		return result;
 	}	
 	
-	private static double Q4(Matrix a, Matrix b) throws Exception {
+	private static Matrix Q4(Matrix a, Matrix b) throws Exception {
 		
 		if (!MatrixUtil.isTwoByTwo(a, b))
 			throw new Exception("Matrices should be 2x2");
 
-		double a22 = a.get1(2,2); 
-		double b11 = b.get1(1,1); 
-		double b21 = b.get1(2,1); 
+		Matrix a22 = a.get1M(2,2); 
+		Matrix b11 = b.get1M(1,1); 
+		Matrix b21 = b.get1M(2,1); 
 		
-		double result = a22 * (-b11 + b21);  
+		Matrix t1 = a22; 
+		Matrix t2 = b21.minus(b11);
+		Matrix result = strasMultHelper(t1, t2);
 		return result;
 	}
 	
-	private static double Q5(Matrix a, Matrix b) throws Exception {
+	private static Matrix Q5(Matrix a, Matrix b) throws Exception {
 		
 		if (!MatrixUtil.isTwoByTwo(a, b))
 			throw new Exception("Matrices should be 2x2");
 
-		double a11 = a.get1(1, 1);
-		double a12 = a.get1(1,2);
-		double b22 = b.get1(2,2); 
+		Matrix a11 = a.get1M(1, 1);
+		Matrix a12 = a.get1M(1,2);
+		Matrix b22 = b.get1M(2,2); 
 		
-		double result = (a11 + a12) * b22;   
+		Matrix t1 = a11.add(a12);
+		Matrix t2 = b22;
+		Matrix result = strasMultHelper(t1, t2);
 		return result;
 	}
 	
-	private static double Q6(Matrix a, Matrix b) throws Exception {
+	private static Matrix Q6(Matrix a, Matrix b) throws Exception {
 		
 		if (!MatrixUtil.isTwoByTwo(a, b))
 			throw new Exception("Matrices should be 2x2");
 
-		double a11 = a.get1(1,1);
-		double a21 = a.get1(2,1);
-		double b11 = b.get1(1,1);
-		double b12 = b.get1(1,2);
+		Matrix a11 = a.get1M(1,1);
+		Matrix a21 = a.get1M(2,1);
+		Matrix b11 = b.get1M(1,1);
+		Matrix b12 = b.get1M(1,2);
 		
-		double result = (-a11 + a21) * (b11 + b12);  
+		Matrix t1 = a21.minus(a11);
+		Matrix t2 = b11.add(b12);
+		Matrix result = strasMultHelper(t1, t2);
 		return result;
 	}
 	
-	private static double Q7(Matrix a, Matrix b) throws Exception {
+	private static Matrix Q7(Matrix a, Matrix b) throws Exception {
 		
 		if (!MatrixUtil.isTwoByTwo(a, b))
 			throw new Exception("Matrices should be 2x2");
 
-		double a12 = a.get1(1,2);
-		double a22 = a.get1(2,2);
-		double b21 = b.get1(2,1);
-		double b22 = b.get1(2,2);
+		Matrix a12 = a.get1M(1,2);
+		Matrix a22 = a.get1M(2,2);
+		Matrix b21 = b.get1M(2,1);
+		Matrix b22 = b.get1M(2,2);
 		
-		double result = (a12 - a22) * (b21 + b22); 
+		Matrix t1 = a12.minus(a22);
+		Matrix t2 = b21.add(b22);
+		Matrix result = strasMultHelper(t1, t2);
 		return result;
 	}
 }

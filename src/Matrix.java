@@ -24,8 +24,27 @@ public class Matrix implements Comparable<Matrix>{
 		return data[row - 1][col - 1];
 	}
 	
+
+	/**
+	 * Returns a sub-matrix that's a 1/2-sized block matrix
+	 * at the given position. 
+	 * Indices are 0-based. 
+	 */ 
 	public Matrix getM(int row, int col) throws Exception {	
 		return MatrixUtil.getMat(this, row, col);
+	}
+	
+	/**
+	 * Returns a sub-matrix that's a 1/2-sized block matrix
+	 * at the given position. 
+	 * Indices are 1-based. 
+	 * @param row
+	 * @param col
+	 * @return
+	 * @throws Exception
+	 */
+	public Matrix get1M(int row, int col) throws Exception {	
+		return MatrixUtil.getMat(this, row - 1, col - 1);
 	}
 	
 	/***
