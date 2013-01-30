@@ -51,7 +51,18 @@ public class StrassenUtil {
 		} else { /* Recursive case */
 			
 			// Divide Matrix Up. 
+			// c11 = Q1 + Q4 - Q5 + Q7
+			Matrix c11 = Q1(a,b).add(Q4(a,b)).minus(Q5(a,b)).add(Q7(a,b));
 			
+			// c21 = Q2 + Q4
+			Matrix c21 = Q2(a,b).add(Q4(a,b));
+			
+			// c12 = Q3 + Q5
+			Matrix c12 = Q3(a,b).add(Q5(a,b));
+			
+			// c22 = Q1 + Q3 - Q2 + Q6
+			Matrix c22 = Q1(a,b).add(Q3(a,b)).minus(Q2(a,b)).add(Q6(a,b));
+
 			
 		}
 		return null; 

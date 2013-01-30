@@ -24,6 +24,36 @@ public class Matrix implements Comparable<Matrix>{
 		return data[row - 1][col - 1];
 	}
 	
+	
+	/**
+	 * Fills this matrix with all values from the given Matrix 'o'. The values
+	 * being filled start at the specified position 'startRow, startCol'
+	 * @param o - Matrix to get values from
+	 * @param startRow - row position to start filling values
+	 * @param startCol - column position to start filling values
+	 * @throws Exception if an error occurs (e.g. invalid index inputs) 
+	 */
+	public void fill(Matrix o, int startRow, int startCol) throws Exception {
+		
+		int rowSize = rowSize();
+		int colSize = colSize();
+		if (startRow + o.rowSize() >= rowSize || 
+			startCol + o.colSize() >= colSize)
+			throw new Exception("Given Matrix's too big to fit in this matrix");
+		
+		if (startRow < 0 || startRow >= rowSize  ||
+			startCol < 0 || startCol >= colSize)
+			throw new Exception("Invalid start Indices Given:" + 
+								startRow +","+ startCol);
+		
+		int rows = o.rowSize();
+		int cols = o.colSize();
+		for (int i = 0; i < rows; ++i) {
+			for (int j = 0; j < cols; ++j) {
+				data[startRow + i][startCol + j] = o.get(i, j);
+			}
+		}
+	}
 
 	/**
 	 * Gets the very first element of the matrix 

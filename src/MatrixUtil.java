@@ -55,7 +55,7 @@ public class MatrixUtil {
 	 * Checks that the given matrices are 2x2 matrices.
 	 * @param a - matrix A
 	 * @param b - matrix B
-	 * @return true if both are 2x2
+	 * @return true if both are 1x1
 	 */
 	public static boolean isOneByOne(Matrix a, Matrix b) {
 		final int size = 1;
