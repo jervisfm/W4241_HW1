@@ -30,6 +30,19 @@ public class MatrixUtil {
 	}
 	
 	/**
+	 * Checks if the given number is a perfect power of two. 
+	 * @param n
+	 * @return
+	 */
+	public static boolean isPowerOfTwo(int n) {
+		
+		double lg2 = Math.log10(n) / Math.log10(2);
+		double lg2_ceil = Math.ceil(lg2);
+		double diff = Math.abs(lg2 - lg2_ceil);
+		return diff < Math.pow(10,-9) ? true : false ;
+	}
+	
+	/**
 	 * Determines if Matrices 'a' and 'b' are square matrices
 	 * and that they have the same dimension.
 	 */

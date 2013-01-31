@@ -72,6 +72,22 @@ public class MatrixUtilTest {
 		}
 	}
 	
+	
+	@Test
+	public void isPowerOfTwo() {
+		int t1 = 1 << 10;
+		int t2 = 1 << 13; 
+		
+		int t3 = t2 + 1;
+		int t4 = t1 - 1;
+		
+		assertTrue(MatrixUtil.isPowerOfTwo(t1));
+		assertTrue(MatrixUtil.isPowerOfTwo(t2));
+		
+		assertFalse(MatrixUtil.isPowerOfTwo(t3));
+		assertFalse(MatrixUtil.isPowerOfTwo(t4));
+	}
+	
 	@Test
 	public void getMat() {
 		double[][] test = {{1,2,3,4}, {5,6,7,8},
