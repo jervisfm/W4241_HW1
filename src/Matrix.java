@@ -24,6 +24,27 @@ public class Matrix implements Comparable<Matrix>{
 		return data[row - 1][col - 1];
 	}
 	
+	/**
+	 * Add extra dimension of zeros (both in rows and columns) 
+	 * @param n - number of dimensions to add. 
+	 */
+	public void padZeros(int n) {
+		
+		if (n < 0)
+			return;
+		int newSize = data.length  + n;
+		double[][] newData = new double[newSize][newSize];
+		
+		int rows = rowSize();
+		int cols = colSize();		
+		for (int i = 0; i < rows; ++i) {
+			for (int j = 0; j < cols; ++j) {
+				newData[i][j] = data[i][j];
+			}
+		}
+		
+		this.data = newData;
+	}
 	
 	/**
 	 * Fills this matrix with all values from the given Matrix 'o'. The values
