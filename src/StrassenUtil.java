@@ -38,6 +38,17 @@ public class StrassenUtil {
 		
 			a.padZeros(pad_size);
 			b.padZeros(pad_size);
+			Matrix paddedMat = strasMultHelper(a, b);
+			
+			Matrix result = new Matrix(size, size);
+			
+			for (int i = 0; i < size; ++i) {
+				for (int j = 0; j < size; ++j) {
+					double val = paddedMat.get(i, j);  
+					result.set(i, j, val);
+				}
+			}
+			return result;
 		}
 		
 		return strasMultHelper(a, b);			

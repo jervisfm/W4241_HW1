@@ -51,4 +51,29 @@ public class StrassenUtilTest {
 			fail("Failed to do multiplication:" + e);
 		}
 	}
+	
+	@Test
+	public void multiplyGeneral() {
+
+		double[][] t1 = {{1,4,6}, {7,5,9}, {7,9,2}};
+		Matrix m1 = new Matrix(3,3);
+		m1.set(t1);
+		
+		double[][] t2 = {{8,3,2}, {9,5,2}, {3,4,7}};
+		Matrix m2 = new Matrix(3,3);
+		m2.set(t2);
+		
+		double[][] ans = {{62, 47, 52}, {128,82,87}, 
+						 {143,74,46}};
+		Matrix expected  = new Matrix(3,3); 
+		expected.set(ans);
+		
+		try {
+			Matrix actual = StrassenUtil.multiply(m1, m2);
+			assertTrue(expected.equals(actual));
+		} catch (Exception e) {
+			fail("Failed to do multiplication:" + e);
+		}
+	}
+	
 }
