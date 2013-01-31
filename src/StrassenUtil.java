@@ -16,7 +16,6 @@ public class StrassenUtil {
 	 * @return
 	 */
 	public static Matrix multiply(Matrix a, Matrix b) throws Exception {
-		// to be implemented. 
 		
 		if (a == null || b == null)
 			throw new Exception("Null Matrix Input given");
