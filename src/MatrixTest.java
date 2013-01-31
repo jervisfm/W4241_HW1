@@ -83,4 +83,18 @@ public class MatrixTest {
 		Matrix actual =  m.getEntireCol(0);
 		assertTrue(actual.compareTo(expected) == 0);
 	}
+	
+	@Test
+	public void padZeros() {
+		double test[][] = { {1,2}, {3,4} };
+		double exp [][] = { {1,2,0}, {3,4,0}, {0,0,0} };
+		Matrix m = new Matrix(2,2);
+		m.set(test);
+		
+		Matrix expected = new Matrix(1,2);
+		expected.set(exp);
+		
+		Matrix actual =  m.padZeros(1);
+		assertTrue(actual.compareTo(expected) == 0);
+	}
 }

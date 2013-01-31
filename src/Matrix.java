@@ -28,10 +28,10 @@ public class Matrix implements Comparable<Matrix>{
 	 * Add extra dimension of zeros (both in rows and columns) 
 	 * @param n - number of dimensions to add. 
 	 */
-	public void padZeros(int n) {
+	public Matrix padZeros(int n) {
 		
 		if (n < 0)
-			return;
+			return null;
 		int newSize = data.length  + n;
 		double[][] newData = new double[newSize][newSize];
 		
@@ -43,7 +43,8 @@ public class Matrix implements Comparable<Matrix>{
 			}
 		}
 		
-		this.data = newData;
+		this.data = newData;		
+		return this;
 	}
 	
 	/**
