@@ -42,6 +42,9 @@ public class StrassenUtil {
 			
 			Matrix result = new Matrix(size, size);
 			
+			/* Save the result from padded Mat to a matrix of
+			 * same size as input matrices. 
+			*/
 			for (int i = 0; i < size; ++i) {
 				for (int j = 0; j < size; ++j) {
 					double val = paddedMat.get(i, j);  
