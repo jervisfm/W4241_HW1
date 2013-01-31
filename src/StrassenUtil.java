@@ -32,14 +32,15 @@ public class StrassenUtil {
 		 */
 		
 		int size = a.rowSize(); 
-		if (MatrixUtil.isPowerOfTwo(size))
-			return strasMultHelper(a,b);
-		else {
-			return null;
+		if (!MatrixUtil.isPowerOfTwo(size)) {
+			int pow2 = (int) MatrixUtil.nextPowerOfTwo(size); 
+			int pad_size = Math.abs(pow2 - size);
+		
+			a.padZeros(pad_size);
+			b.padZeros(pad_size);
 		}
 		
-		
-		
+		return strasMultHelper(a, b);			
 	}
 	
 
