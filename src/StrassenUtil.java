@@ -31,11 +31,15 @@ public class StrassenUtil {
 		 * dimension 
 		 */
 		
+		int size = a.rowSize(); 
+		if (MatrixUtil.isPowerOfTwo(size))
+			return strasMultHelper(a,b);
+		else {
+			return null;
+		}
 		
 		
 		
-		
-		return strasMultHelper(a,b);
 	}
 	
 

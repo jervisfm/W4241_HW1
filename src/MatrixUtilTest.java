@@ -89,6 +89,22 @@ public class MatrixUtilTest {
 	}
 	
 	@Test
+	public void nextPowerOfTwo() {
+		final double err = Math.pow(10, -9);
+		int t1 = 1 << 7; 
+		int e1 = 1 << 8; 
+		assertEquals(MatrixUtil.nextPowerOfTwo(t1), e1, err);
+		
+		t1 = (1 << 7) - 1;
+		e1 = (1 << 7);
+		assertEquals(MatrixUtil.nextPowerOfTwo(t1), e1, err);
+		
+		t1 = (1 << 7) + 1;
+		e1 = (1 << 8);
+		assertEquals(MatrixUtil.nextPowerOfTwo(t1), e1, err);
+	}
+	
+	@Test
 	public void getMat() {
 		double[][] test = {{1,2,3,4}, {5,6,7,8},
 						  {9,10,11,12}, {13,14,15,16}};

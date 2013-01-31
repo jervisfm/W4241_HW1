@@ -31,15 +31,33 @@ public class MatrixUtil {
 	
 	/**
 	 * Checks if the given number is a perfect power of two. 
-	 * @param n
-	 * @return
+	 * @param n - number to check
+	 * @return true if n is a power of 2, false otherwise
 	 */
 	public static boolean isPowerOfTwo(int n) {
 		
-		double lg2 = Math.log10(n) / Math.log10(2);
+		double lg2 = log2(n); // Log base 2
 		double lg2_ceil = Math.ceil(lg2);
 		double diff = Math.abs(lg2 - lg2_ceil);
 		return diff < Math.pow(10,-9) ? true : false ;
+	}
+	
+	/**
+	 * Computes the log base two of the given number
+	 */
+	public static double log2(double n) {
+		return Math.log10(n) / Math.log10(2); // Log base 2; 
+	}
+	
+	/**
+	 * Returns the number that is the next Power of Two that follows 'n'. 
+	 * @param n
+	 * @return
+	 */
+	public static double nextPowerOfTwo(double n) {
+		double pow2 = Math.floor(log2(n));
+		double next_power = Math.pow(2, pow2) * 2;
+		return next_power;
 	}
 	
 	/**
