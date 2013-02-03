@@ -39,12 +39,8 @@ public class MatrixReader {
 			if (matDim.length != 2)
 				throw new Exception("Row/Column not specified correctly");
 			
-			System.out.println("***" + matDim[0] +" , " + matDim[1]);
-			
 			int rows = Integer.parseInt(matDim[0]);
 			int cols = Integer.parseInt(matDim[1]);
-			
-			
 			
 			if (rows < 0 || cols < 0) {
 				throw new Exception("Invalids rows/cols given:" +
