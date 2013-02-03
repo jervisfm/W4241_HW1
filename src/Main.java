@@ -11,7 +11,7 @@ public class Main {
 	public static void usage() {
 		String msg = "Usage: java main [file1] [file2] [file3] " +					 
 					 "where file contains Matrix(es) in the format: \n" +					 
-					 "rows cols\n" +
+					 "rows/cols\n" +
 					 "[Matrix].\n" +
 					 "with rows,cols representing number of row/col in Matrix";					 
 		System.out.println(msg);

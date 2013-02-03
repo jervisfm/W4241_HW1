@@ -33,14 +33,14 @@ public class MatrixReader {
 		in.useDelimiter("\\s+"); // Skip over all whitespace chars
 		// Read the data matrix
 		do {
-			String[] matDim = new String[2];
+			String[] matDim = new String[1];
 			matDim[0] = in.next();			
-			matDim[1] = in.next();
-			if (matDim.length != 2)
+			
+			if (matDim.length != 1)
 				throw new Exception("Row/Column not specified correctly");
 			
-			int rows = Integer.parseInt(matDim[0]);
-			int cols = Integer.parseInt(matDim[1]);
+			int rows,cols;
+			rows = cols = Integer.parseInt(matDim[0]);
 			
 			if (rows < 0 || cols < 0) {
 				throw new Exception("Invalids rows/cols given:" +

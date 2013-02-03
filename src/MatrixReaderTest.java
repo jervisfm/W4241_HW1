@@ -7,13 +7,13 @@ public class MatrixReaderTest {
 
 	@Test
 	public void ReadMatrix() {
-		String s = "3 3\n" +
+		String s = "3\n" +
 				   "1 2 3\n" +
 				   "4 5 6\n" +
 				   "7 8 9\n";		
 		s += "\n\n" + s + "\n\n";
 		double [][] ans = {{1,2,3}, {4,5,6}, {7,8,9}};
-		String bs = "4 4\n" +
+		String bs = "4\n" +
 				    "1 2 3\n" +
 				    "4 5 6\n" +
 				    "7 8 9\n";
