@@ -64,7 +64,7 @@ public class MatrixReader {
 	
 	/**
 	 * Matrix Format is : 
-	 * Rows Cols
+	 * Rows/Cols
 	 * [Matrix-Data]
 	 * return null if the file is empty or another error occured.
 	 * @throws FileNotFoundException if the file does not exist
