@@ -15,10 +15,12 @@ public class MatrixReader {
 	private File f;
 	public MatrixReader(File f) throws FileNotFoundException, Exception {
 		this.f = f;
+		matrix = new ArrayList<Matrix>();
 		readMatrixFromFile(); 
 	}
 
 	public MatrixReader(String s) throws Exception {
+		matrix = new ArrayList<Matrix>();
 		readMatrixFromString(s);
 	}
 	
@@ -26,32 +28,38 @@ public class MatrixReader {
 		return matrix;
 	}
 	
-	
-	
 	private void readMatrixFromString(String ms) throws Exception {
-		Scanner in = new Scanner(ms); 
-		String[] matDim = in.nextLine().split("\\s+");
-		if (matDim.length != 2)
-			throw new Exception("Row/Column not specified correctly");
-		
-		int rows = Integer.parseInt(matDim[0]);
-		int cols = Integer.parseInt(matDim[1]);
-		
-		if (rows < 0 || cols < 0) {
-			throw new Exception("Invalids rows/cols given:" + rows + "," +cols);
-		}
+		Scanner in = new Scanner(ms);
+		in.useDelimiter("\\s+"); // Skip over all whitespace chars
 		
 		// Read the data matrix
-		double[][] result = new double[rows][cols]; 
-		for (int i = 0; i < rows; ++i) {
-			for (int j = 0; j < cols; ++j) {
-				double val = Double.parseDouble(in.next());
-				result[i][j] = val;
+		do {
+			String[] matDim = new String[2];
+			matDim[0] = in.next(); 
+			matDim[1] = in.next();
+			if (matDim.length != 2)
+				throw new Exception("Row/Column not specified correctly");
+			
+			int rows = Integer.parseInt(matDim[0]);
+			int cols = Integer.parseInt(matDim[1]);
+			
+			if (rows < 0 || cols < 0) {
+				throw new Exception("Invalids rows/cols given:" +
+									rows + "," +cols);
 			}
-		}
-		Matrix mat = new Matrix(rows,cols);
-		mat.set(result);
-		this.matrix.add(mat);
+			
+			double[][] result = new double[rows][cols]; 
+			for (int i = 0; i < rows; ++i) {
+				for (int j = 0; j < cols; ++j) {
+					double val = Double.parseDouble(in.next());
+					result[i][j] = val;
+				}
+			}
+			Matrix mat = new Matrix(rows,cols);
+			mat.set(result);
+			this.matrix.add(mat);
+		} while (in.hasNext());
+		
 	}
 	
 	
@@ -62,14 +70,14 @@ public class MatrixReader {
 	 * return null if the file is empty or another error occured.
 	 * @throws FileNotFoundException if the file does not exist
 	 */
-	private Matrix readMatrixFromFile() throws FileNotFoundException,
+	private void readMatrixFromFile() throws FileNotFoundException,
 											   Exception {
 		String ms = readFileToString(); 
 		
 		if (ms.isEmpty())
-			return null;
+			throw new Exception("Empty Matrix string given");
 		
-		return readMatrixFromString(ms);
+		readMatrixFromString(ms);
 	}
 	
 	

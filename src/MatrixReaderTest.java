@@ -12,22 +12,27 @@ public class MatrixReaderTest {
 				   "1 2 3\n" +
 				   "4 5 6\n" +
 				   "7 8 9\n";
-		
+		s += "\n\n" + s + "\n\n";
 		double [][] ans = {{1,2,3}, {4,5,6}, {7,8,9}};
 		String bs = "4 4\n" +
 				    "1 2 3\n" +
 				    "4 5 6\n" +
 				    "7 8 9\n";
 		
+		
+		
 		try {
 			MatrixReader mr = new MatrixReader(s);
-			Matrix actual = mr.getMatrix();
+			Matrix actual = mr.getMatrix().get(0);
+			Matrix actual2 = mr.getMatrix().get(1);
 			Matrix expected = new Matrix(3,3); 
 			expected.set(ans);
 			assertTrue(actual.equals(expected));
+			assertTrue(actual2.equals(expected));
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
 			fail("Error occured: " + e);
 			
 		}
