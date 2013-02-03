@@ -7,6 +7,7 @@ Introduction
 ============
 This is a Java package that implements Matrix multiplication through both the Strassen and naive algorithms. 
 
+For information on the Strassen Algorithm please see this online article: http://en.wikipedia.org/wiki/Strassen_algorithm
 
 How to Compile
 ==============
@@ -16,16 +17,19 @@ $ javac Main.java
 
 How to Run
 =============
-java Main [file1]  [file2] [file3]
+java Main [file]
 
-where file[1,2,3] is a file contain a Matrix specified in the format :
+where file is a file contain a Matrix specified in the format :
 
-row,cols
+row/cols
 [Matrix-Data]
 
+row/cols is a number representing the size of the matrix. 
 
 Example Run
 ===========
+You can do a sample run on the given file1.txt, file2.txt and file3.txt files. You will get the following output:
+
 Matrix A: 
 0.22233246964857212, 0.36738135130486793, 
 0.07327389799637435, 0.441073327740256, 
@@ -145,5 +149,16 @@ Avg size of an element is 6.316573871323084E-15
 
  ----------- 
 
+Error Checking
+==============
+A resonable attempt has been made to check and validate all inputs. Where appropriate, inputs are checked for validity and an appropriate exception is thrown.
 
 
+Unit Tests
+==========
+A TDD methodology was followed in writing the package. You can use Eclipse's JUnit version 4 to execute and run the tests. 
+
+
+Results Discussion
+=================
+From the experiments I conducted using the sample inputs file{1,2,3}.txt matrices, I observed that the numerical error resulting from floating point computations are higher when using Strassen's algorithm than the traditional naive algorithm of Matrix multiplication. This can be seen from the values of "2-norm of the Error Matrix" which I compute and print out in addition to the error matrice.

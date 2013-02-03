@@ -9,7 +9,7 @@ public class Main {
 
 	
 	public static void usage() {
-		String msg = "Usage: java main [file1] [file2] [file3] " +					 
+		String msg = "Usage: java main [file1]" +					 
 					 "where file contains Matrix(es) in the format: \n" +					 
 					 "rows/cols\n" +
 					 "[Matrix].\n" +
@@ -18,39 +18,39 @@ public class Main {
 	}
 	public static void main(String[] args) {
 		
-		if (args.length != 3) {
+		if (args.length != 1) {
 			usage();
 			return;
 		}
 		
-		for (int i = 0; i < 3; ++i) {
-			File f = new File(args[i]);
-			try {
-				MatrixReader mr = new MatrixReader(f);
-				ArrayList<Matrix> matrices = mr.getMatrix();
-				Matrix m1 = matrices.get(0);
-				Matrix m2 = matrices.get(1);
-				
-				MatrixPair mp = new MatrixPair(m1,m2);
-				algCompare(Arrays.asList(mp));
-				System.out.println("\n");
-				
-			} catch (FileNotFoundException e) {
-				String err = "The following file was not found:\n" +
-						      f.toString() + "\n"; 
-				err += "Please give correct file paths and try again"; 
-				System.out.println(err);
-				System.exit(-1);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				String err = "An error occured while parsing the" +
-							 " Matrix file:\n" + f.getAbsolutePath() + "\n" +
-							 e + "\n" +
-							 "Please check the format of the file and try" +
-							 "again";
-				System.out.println(err);
-			}
+		
+		File f = new File(args[0]);
+		try {
+			MatrixReader mr = new MatrixReader(f);
+			ArrayList<Matrix> matrices = mr.getMatrix();
+			Matrix m1 = matrices.get(0);
+			Matrix m2 = matrices.get(1);
+			
+			MatrixPair mp = new MatrixPair(m1,m2);
+			algCompare(Arrays.asList(mp));
+			System.out.println("\n");
+			
+		} catch (FileNotFoundException e) {
+			String err = "The following file was not found:\n" +
+					      f.toString() + "\n"; 
+			err += "Please give correct file paths and try again"; 
+			System.out.println(err);
+			System.exit(-1);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			String err = "An error occured while parsing the" +
+						 " Matrix file:\n" + f.getAbsolutePath() + "\n" +
+						 e + "\n" +
+						 "Please check the format of the file and try" +
+						 "again";
+			System.out.println(err);
 		}
+		
 		
 	}
 	
