@@ -31,17 +31,20 @@ public class MatrixReader {
 	private void readMatrixFromString(String ms) throws Exception {
 		Scanner in = new Scanner(ms);
 		in.useDelimiter("\\s+"); // Skip over all whitespace chars
-		
 		// Read the data matrix
 		do {
 			String[] matDim = new String[2];
-			matDim[0] = in.next(); 
+			matDim[0] = in.next();			
 			matDim[1] = in.next();
 			if (matDim.length != 2)
 				throw new Exception("Row/Column not specified correctly");
 			
+			System.out.println("***" + matDim[0] +" , " + matDim[1]);
+			
 			int rows = Integer.parseInt(matDim[0]);
 			int cols = Integer.parseInt(matDim[1]);
+			
+			
 			
 			if (rows < 0 || cols < 0) {
 				throw new Exception("Invalids rows/cols given:" +
@@ -88,6 +91,7 @@ public class MatrixReader {
 		StringBuffer sb = new StringBuffer(100);
 		while (in.hasNextLine()) {
 			sb.append(in.nextLine());
+			sb.append("\n");
 		}
 		return sb.toString();
 	}
