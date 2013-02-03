@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -10,7 +11,7 @@ import java.util.Scanner;
  */
 public class MatrixReader {
 
-	private Matrix matrix; 
+	private ArrayList<Matrix> matrix; 
 	private File f;
 	public MatrixReader(File f) throws FileNotFoundException, Exception {
 		this.f = f;
@@ -21,13 +22,13 @@ public class MatrixReader {
 		readMatrixFromString(s);
 	}
 	
-	public Matrix getMatrix() {
+	public ArrayList<Matrix> getMatrix() {
 		return matrix;
 	}
 	
 	
 	
-	private Matrix readMatrixFromString(String ms) throws Exception {
+	private void readMatrixFromString(String ms) throws Exception {
 		Scanner in = new Scanner(ms); 
 		String[] matDim = in.nextLine().split("\\s+");
 		if (matDim.length != 2)
@@ -50,8 +51,7 @@ public class MatrixReader {
 		}
 		Matrix mat = new Matrix(rows,cols);
 		mat.set(result);
-		this.matrix = mat;
-		return mat;
+		this.matrix.add(mat);
 	}
 	
 	

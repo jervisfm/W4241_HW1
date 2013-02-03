@@ -25,6 +25,43 @@ public class Matrix implements Comparable<Matrix>{
 	}
 	
 	/**
+	 * Computes the second norm of a matrix
+	 * See:http://en.wikipedia.org/wiki/Matrix_norm#.22Entrywise.22_norms
+	 * for further details
+	 * @return
+	 */
+	public double norm() {
+		
+		int rows = rowSize();
+		int cols = colSize();
+		double total = 0; 
+		for (int i = 0; i < rows; ++i) {
+			for (int j = 0; j <cols; ++j) {
+				total += Math.pow(data[i][j],2);
+			}
+		}
+		return Math.sqrt(total);
+	}
+	
+	/**
+	 * Compute the average of all the elements in the matrix
+	 * @return
+	 */
+	public double avg() {
+		int rows = rowSize();
+		int cols = colSize();
+		double total = 0;
+		int counter = 0;
+		for (int i = 0; i < rows; ++i) {
+			for(int j = 0; j < cols; ++j) {
+				total += data[i][j];
+				++counter;
+			}
+		}
+		return total / counter;
+	}
+	
+	/**
 	 * Add extra dimension of zeros (both in rows and columns) 
 	 * @param n - number of dimensions to add. 
 	 */

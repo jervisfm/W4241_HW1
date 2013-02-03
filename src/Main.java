@@ -4,8 +4,40 @@ import java.util.List;
 
 public class Main {
 
+	
+	public static void usage() {
+		String msg = "Usage: java main [file1] [file2] [file3] " +					 
+					 "where file contains a Matrix in the format: \n" +
+					 "rows cols\n" +
+					 "[Matrix]";
+		System.out.println(msg);
+	}
 	public static void main(String[] args) {
 		
+		
+		if (args.length != 3) {
+			usage();
+			return;
+		}
+		
+		
+		
+	}
+	
+	public static void t1() {
+		int size;
+		for (int i = 0; i < 3; ++i) {
+			size = (int) Math.pow(2, i+1);
+			System.out.printf("Testing Matrix of %d\n", size);
+			Matrix m1 = generateRandomMatrix(size,size);
+			Matrix m2 = generateRandomMatrix(size,size);
+			
+			MatrixPair mp = new MatrixPair(m1, m2);
+			algCompare(Arrays.asList(mp));
+			System.out.println("\n");
+		}
+	}
+	public static void t0() {
 		double[][] t1 = {{1,4,6,8}, {7,5,9,6}, {7,9,2,1}, {8,3,2,6}};
 		Matrix m1 = new Matrix(4,4);
 		m1.set(t1);
@@ -17,7 +49,32 @@ public class Main {
 		MatrixPair mp = new MatrixPair(m1, m2);
 		
 		algCompare(Arrays.asList(mp));
+	}
+	
+	/**
+	 * Generate a Random Matrix
+	 * @param row
+	 * @param col
+	 * @return
+	 */
+	public static Matrix generateRandomMatrix(int row, int col) {
 		
+		Matrix m = new Matrix(row,col);
+		for (int i = 0; i < row; ++i) {
+			for (int j = 0; j < col; ++j) {
+				try {
+					m.set(i, j, f(Math.random()));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return m;
+	}
+	
+	private static double f(double n) {
+		return Math.sin(n) * Math.cos(n);
 	}
 	
 	public static void algCompare(List<MatrixPair> pairs) {
@@ -40,6 +97,8 @@ public class Main {
 				Matrix diff = resultNorm.minus(resultStras);
 				
 				System.out.println("Error Matrix: \n" + diff);
+				System.out.println("2-norm of Error Matrix is " + diff.norm());
+				System.out.println("Avg size of an element is " + diff.norm());
 				System.out.println("\n ----------- \n");
 				
 			} catch (Exception e) {
